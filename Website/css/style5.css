@@ -4,7 +4,7 @@
 	font-family: Century Gothic;
 }
 header{
-	background-color: #663399;
+background: -webkit-linear-gradient(left, #9400d3, #9932cc, #9370db);
 	height: 20vh;
 	background-size: auto;
 	background-position: center;
@@ -59,6 +59,20 @@ h1{
 section{
 	width: auto;
 }
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	background-color: #D3D3D3;
+	padding: 10px;
+	border-radius: 10px;
+  }
+  .grid-item {
+	background-color: #fff;
+	border: 1px solid #9932cc;
+	padding: 20px;
+	font-size: 20px;
+	text-align: left;
+  }
 aside { 
 	background-color: #fff;
 		height: 50vh;

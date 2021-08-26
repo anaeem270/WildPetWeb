@@ -4,7 +4,7 @@
 	font-family: Century Gothic;
 }
 header{
-	background-color: #663399;
+	background: -webkit-linear-gradient(left, #9400d3, #9932cc, #9370db);
 	height: 20vh;
 	background-size: auto;
 	background-position: center;

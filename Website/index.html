@@ -24,7 +24,7 @@
 					
 					<li><a href = "#"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 25px;">settings</i>Settings</a></li>
 						
-						<li><a href = "#"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 25px;">logout</i>Signout</a></li>
+							<li><a href = "file:///C:/Users/marqu/Downloads/Indutry%20Project%203A/Website/vet.html"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 25px;">logout</i>Signout</a></li>
 </ul>
 		</nav>
 		
@@ -33,41 +33,60 @@
 	</header>
 	<main>
 						<h1 style="text-align: center;">Welcome Client</h1>
+						<br>
 		<article>
 			<section>
-
-				<aside>
-					<p style="text-align: center;">Profile</p>
-					<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\profile.png" width = 200px; height = 200px; style="margin-left: 50px;">
-					<i class="material-icons" style="font-size: 90px; text-align: center; margin-left: 105px;"></i>
-					<br>
-					<p style="text-align: left; margin-left: 20px;">Name:</p>
-					<p style="text-align: left; margin-left: 20px;">Age:</p>
-					<p style="text-align: left; margin-left: 20px;">Email:</p>
+				<style>
+					
+					.grid-container {
+	  display: grid;
+	  grid-template-columns: auto auto auto auto;
+	   height: 400px;
+	  align-content: center;
+	  justify-content: space-evenly;
+	
+	}
+					</style>
+	<div class="grid-container">
+		<div class="grid-item">	<p style="text-align: center;">Profile</p>
+			<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\profile.png" width = 200px; height = 200px; style="margin-left: 50px;">
+			<i class="material-icons" style="font-size: 90px; text-align: center; margin-left: 50px;"></i>
+			<br>
+			<p style="text-align: left; margin-left: 20px;">Name:</p>
+			<p style="text-align: left; margin-left: 20px;">Age:</p>
+			<p style="text-align: left; margin-left: 20px;">Email:</p></div>
+		<div class="grid-item">									<p style="text-align: center;">My Pets</p>
+			<br>
+			<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\dog2.jpg" width = 300px; height = auto;>
+			<p style="text-align: left;margin-left: 10px">Pet Name:</p>
+			<p style="text-align: left;margin-left: 10px">Breed:</p></div>
+		<div class="grid-item"><p style="text-align: center;">Upcoming Appointments</p>
+			<br>
+			<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\dog2.jpg" width = 300px; height = auto;>
+			<p style="text-align: left;margin-left: 10px">Pet Name:</p>
+			<p style="text-align: left;margin-left: 10px">Due in 1 Week</p>
+			<p style="text-align: left;margin-left: 10px">Service Type: Vaccination</p></div>
+	
+	  </div>
+			<!-----	<aside>
+				
 
 				</aside>
 								<aside 1>
-					<p style="text-align: center;">My Pets</p>
-					<br>
-					<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\dog2.jpg" width = 300px; height = auto;>
-					<p style="text-align: left;margin-left: 10px">Pet Name:</p>
-					<p style="text-align: left;margin-left: 10px">Breed:</p>
+					
 
 				</aside 1>
 
 												<aside 2>
-					<p style="text-align: center;">Upcoming Appointments</p>
-					<br>
-					<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\dog2.jpg" width = 300px; height = auto;>
-					<p style="text-align: left;margin-left: 10px">Pet Name:</p>
-					<p style="text-align: left;margin-left: 10px">Due in 1 Week</p>
-					<p style="text-align: left;margin-left: 10px">Service Type: Vaccination</p>
-				</aside 2>
+					
+				</aside 2>----->
 
 			</section>
 		</article>
 
 	</main>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 	<footer>
 		
 	</footer>
