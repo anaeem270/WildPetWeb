@@ -10,7 +10,7 @@ html,body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #9400d3,    #9932cc, #9370db);
+  background: -webkit-linear-gradient(left, #9400d3,    #9932cc, #ac34e7);
 }
 .header img {
   float: left;

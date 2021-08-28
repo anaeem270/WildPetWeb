@@ -1,10 +1,12 @@
-{
-	margin:  0;
-	padding:  0;
-	font-family: Century Gothic;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 header{
-background: -webkit-linear-gradient(left, #9400d3, #9932cc, #9370db);
+background: -webkit-linear-gradient(left, #9400d3, #9932cc, #ac34e7);
 	height: 20vh;
 	background-size: auto;
 	background-position: center;
@@ -73,14 +75,7 @@ section{
 	font-size: 20px;
 	text-align: left;
   }
-aside { 
-	background-color: #fff;
-		height: 50vh;
-	float:right;
-    width:400px; 
-    margin-right: 400px;
-        margin-top: -5px;
-}
+
 .column {
   float: left;
   width: 35.33%;

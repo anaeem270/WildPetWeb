@@ -1,10 +1,12 @@
-{
-	margin:  0;
-	padding:  0;
-	font-family: Century Gothic;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 header{
-background: -webkit-linear-gradient(left, #9400d3, #9932cc, #9370db);
+background: -webkit-linear-gradient(left, #9400d3, #9932cc, #ac34e7);
 	height: 20vh;
 	background-size: auto;
 	background-position: center;
@@ -56,8 +58,27 @@ h1{
 	font-size: 25px;
 	margin-right: 150px;
 }
-section{
-	width: auto;
+button{
+	float: right;
+		margin-right: 20px;
+		position: relative;
+  display: inline-block;
+  color: #fff;
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #6616d0, #ac34e7);
+  border-radius: 25px;
+  margin: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+button:hover{
+	background-color: #ac34e7;
+	color: yellow;
 }
 .grid-container {
 	display: grid;
@@ -73,14 +94,7 @@ section{
 	font-size: 20px;
 	text-align: left;
   }
-aside { 
-	background-color: #fff;
-		height: 50vh;
-	float:right;
-    width:400px; 
-    margin-right: 400px;
-        margin-top: -5px;
-}
+
 .column {
   float: left;
   width: 35.33%;

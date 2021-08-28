@@ -1,10 +1,12 @@
 const config = {
-    apiKey: "AIzaSyDlyO_jXSow9X8plwNANgYoEDjauUqp2hg",
-    authDomain: "website-b114e.firebaseapp.com",
-    projectId: "website-b114e",
-    storageBucket: "website-b114e.appspot.com",
-    messagingSenderId: "1024995777553",
-    appId: "1:1024995777553:web:8f3f4075445ebf790e25b0"
+    apiKey: "AIzaSyDpc5RCOi8CgDdOTainSQyvq_u9dnsP0q0",
+    authDomain: "thewildvetapp.firebaseapp.com",
+    databaseURL: "https://thewildvetapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "thewildvetapp",
+    storageBucket: "thewildvetapp.appspot.com",
+    messagingSenderId: "491566586632",
+    appId: "1:491566586632:web:07ec2b38067083297eaabd",
+    measurementId: "G-EQV4MYTL78"
 }
 
 firebase.initializeApp(config);
