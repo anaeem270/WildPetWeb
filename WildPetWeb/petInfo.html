@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+	<title>Pet Info</title>
+	
+</head>
+<body>
+	<header>
+	<nav class="navbar navbar-expand-sm navbar-dark"style="background-color:purple">
+	 <div class="container">
+  <a class="navbar-brand" href="index.php">
+    <img src="images/thewildvetlogo.png" alt="logo" style="width:100px;">
+  </a>
+  
+  <ul class="navbar-nav"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+    <li class="nav-item">
+      <a class="nav-link" href ="profile.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">perm_identity</i> Profile</a></li> </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href = "pets.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">pets</i>Pets</a></li></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  href="reminder.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">notifications</i>Reminder</a></li>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link"href = "#"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">support_agent</i>Support</a></li>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link" href = "#"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">settings</i>Settings</a></li>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link" href = "logout.php"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">logout</i>Signout</a></li>
+    </li>
+	</div>
+
+  </ul>
+</nav>	 
+</div>
+	</header>
+	<main>
+ <div class="jumbotron ">
+							<div class="container">  
+	
+						<h1 style="text-align: center;">Pet Info</h1><br> <br><br>
+            <style>
+							.grid-container {
+								display: grid;
+								grid-template-columns: auto auto auto auto;
+								 height: 400px;
+								align-content: center;
+								justify-content: space-evenly;
+							  
+							  }
+											  </style>
+							  <div class="grid-container">
+								  <div class="grid-item">	<style>
+                    body {
+                      margin:0px;
+                    }
+                  
+                    .center {
+                      display:inline;
+                      margin: 3px;
+                    }
+                  
+                    .form-input {
+                      width:100px;
+                      padding:3px;
+                      background:#fff;
+                      border:2px dashed dodgerblue;
+                    }
+                    .form-input input {
+                      display:none;
+                    }
+                    .form-input label {
+                      display:block;
+                      width:100px;
+                      height: auto;
+                      max-height: 100px;
+                      background:#fff;
+                      border-radius:10px;
+                      cursor:pointer;
+                    }
+                  
+                    .form-input img {
+                      width:100px;
+                      height: 100px;
+                      margin: 2px;
+                      opacity: .4;
+                    }
+                  
+                    .imgRemove{
+                      position: relative;
+                      bottom: 114px;
+                      left: 68%;
+                      background-color: transparent;
+                      border: none;
+                      font-size: 30px;
+                      outline: none;
+                    }
+                    .imgRemove::after{
+                      content: ' \21BA';
+                      color: #fff;
+                      font-weight: 900;
+                      border-radius: 8px;
+                      cursor: pointer;
+                    }
+                    .small{
+                      color: firebrick;
+                    } 
+                    </style>
+                  
+                  </head>
+                  
+                  <body>
+				  
+                  <div class="container">
+                     <div class="image-upload-one"></div>
+                       <div class="center">
+                         <div class="form-input">
+                           <label for="file-ip-1">
+                             <img id="file-ip-1-preview" src="https://i.ibb.co/ZVFsg37/default.png">
+                             <button type="button" class="imgRemove" onclick="myImgRemoveFunctionOne()"></button>
+                           </label>
+                           <input type="file"  name="img_one" id="file-ip-1" accept="image/*" onchange="showPreviewOne(event);">
+                         </div>
+                         <small class="small">Use the &#8634; icon to reset the image</small>
+                       </div>
+                     </div>
+                      
+                    <script>
+                  
+                      function showPreviewOne(event){
+                        if(event.target.files.length > 0){
+                          let src = URL.createObjectURL(event.target.files[0]);
+                          let preview = document.getElementById("file-ip-1-preview");
+                          preview.src = src;
+                          preview.style.display = "block";
+                        } 
+                      }
+                      function myImgRemoveFunctionOne() {
+                        document.getElementById("file-ip-1-preview").src = "https://i.ibb.co/ZVFsg37/default.png";
+                      }
+                  
+                    </script>
+                     
+                  </body></div>
+				 
+				 <div class="container"> 
+				<div class="grid-item"> <form action = "#" method="POST">
+                    
+                                
+                    <br>
+                             <div class="jumbotron ">
+							<div class="container"> 
+                                  <div>  
+							<div class="form-group">
+      <label for="email">Pet Name</label>
+       <input type="text" class="form-control" id="usr" name="petname">
+    </div>
+    <div class="form-group">
+      <label for="weight">Weight</label>
+     <input type="text" class="form-control" id="usr" name="weight">
+    </div>
+	<div class="form-group">
+      <label for="dateofbirth">Date of birth</label>
+      <input type="Date" class="form-control" id="usr" name="dateofbirth">
+    </div>	
+	<div class="form-group">
+      <label for="pwd">Gender</label>
+	   <br>
+      <input type="radio" class="form-check-input" id="radio2" name="Male" value="option2">Male
+      </label><br>
+        <input type="radio" class="form-check-input" id="radio2" name="Female" value="option2">Female
+      </label>
+	  </div>
+	  <button type="submit" class="btn btn-primary"align="center">Submit</button>
+</form>
+    </div>	
+	
+
+	
+
+	</main>
+	<footer>
+		
+	</footer>
+</body>
+</html>
