@@ -4,16 +4,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<title>Vaccination</title>
-	
+	<link rel="stylesheet" type="text/css" href="css/style9.css">
 </head>
 <body>
 	<header>
 	<nav class="navbar navbar-expand-sm navbar-dark"style="background-color:purple">
 	 <div class="container">
   
-  <a class="navbar-brand" href="index.php">
+  <a class="navbar-brand" href="#">
     <img src="images/thewildvetlogo.png" alt="logo" style="width:100px;">
   </a>
   
@@ -29,7 +30,7 @@
       <a class="nav-link"  href="reminder.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">notifications</i>Reminder</a></li>
     </li>
 	<li class="nav-item">
-      <a class="nav-link"href = "support.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">support_agent</i>Support</a></li>
+      <a class="nav-link"href = "#"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">support_agent</i>Support</a></li>
     </li>
 	<li class="nav-item">
       <a class="nav-link" href = "#"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">settings</i>Settings</a></li>
@@ -45,17 +46,29 @@
 </div>
 	</header>
 	<main>
-<div class="jumbotron jumbotron-fluid">
+<div class=" jumbotron">
 	 <div class="container">
 	
-						<h1 style="text-align: center;">Reminder</h1>
-						<p style="text-align: right;" style="font-size: 16px;" style="margin-right: 100px;">Want to reschedule?</p>
-						<p style="text-align: right;" style="font-size: 16px;" style="margin-right: 100px;">reception@thewildvet.com.au</p>
-						<p style="text-align: right;" style="font-size: 16px;" style="margin-right: 100px;">1300 9453 83</p>
+					<h1 style="text-align: center;">Reminders</h1><br> <br>
+						<form style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+						
+						<p style="text-align: right;" style="font-size: 13px;" style="margin-right: 100px;">Want to reschedule?</p>
+						<p style="text-align: right;" style="font-size: 13px;" style="margin-right: 100px;">reception@thewildvet.com.au</p>
+						<p style="text-align: right;" style="font-size: 13xp;" style="margin-right: 100px;">1300 9453 83</p>
 						</div>
 		<article>
 			<section>
 <style>
+
+ 
+ 
+
+
+
+
 				.grid-container {
 					display: grid;
 					grid-template-columns: auto auto auto auto;
@@ -65,22 +78,31 @@
 				  
 				  }
 								  </style>
-				  <div class="grid-container">
-					  <div class="grid-item">	<img src="images/dog1.jpg"class="rounded" width="300xp;">
+		
+		
+					  
+							
+						 <div class="grid-container">			  
+					 <div class= "card" style="width: 250px;" >
+					  <div class="grid-item">	<img src="images/dog1.jpg" class="img-thumbnail"width="250xp;">
 						<p style="text-align: left;">Pet Name:</p>
 						<p style="text-align: left;">Vaccination Due Date:</p>
 						<p style="text-align: left;">Status:</p>
-						<p style="text-align: left;">Vaccination Type:</p></div>
-					  <div class="grid-item">									<img src="images/cat.jpg"class="rounded" width="300xp;">
+					<p style="text-align: left;">Vaccination Type:</p></div></div>
+					
+					 <div class=" card"style="width: 250px;">
+					 <div class="grid-item">									<img src="images/cat.jpg"class="img-thumbnail" width="250xp;">
 						<p style="text-align: left;">Pet Name:</p>
 			<p style="text-align: left;">Vaccination Due Date:</p>
 			<p style="text-align: left;">Status:</p>
-			<p style="text-align: left;">Vaccination Type:</p></div>
-					  <div class="grid-item"><img src="images/dog2.jpg"class="rounded" width="300xp;">
+			<p style="text-align: left;">Vaccination Type:</p></div></div>
+			<div class="card"style="width: 250px;">
+					  <div class="grid-item"><img src="images/dog2.jpg"class="img-thumbnail" width="250xp;">
 						<p style="text-align: left;">Pet Name:</p>
 						<p style="text-align: left;">Vaccination Due Date:</p>
 						<p style="text-align: left;">Status:</p>
-						<p style="text-align: left;">Vaccination Type:</p></div>
+						<p style="text-align: left;">Vaccination Type:</p></div> </div>
+						</div>
 				  
 					</div>
 
