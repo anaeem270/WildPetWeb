@@ -48,7 +48,7 @@ main{
 	background-color: #D3D3D3;
 	background-image: url();
 	width: auto;
-	height: 100vh;
+	height: auto;
 	background-size: auto;
 	background-position: center;
 	  background-repeat: no-repeat;
@@ -67,7 +67,6 @@ main{
 
 }
 button{
-	float: right;
 		margin-right: 20px;
 		position: relative;
   display: inline-block;
@@ -120,10 +119,22 @@ img {
 	background-color: #fff;
 	border: 1px solid #9932cc;
 	padding: 20px;
-	font-size: 20px;
-	text-align: center;
+	font-size: 16px;
+	text-align: auto;
+		width: 35%;
+		margin: 30px auto;
+		background: #fff;
+		padding: 20px;
   }
-
-footer{
-
+  
+  .infosResults div p{
+	background-color: #fff;
+	border: 1px solid #9932cc;
+	padding: 20px;
+	font-size: 16px;
+	text-align: auto;
+		width: 35%;
+		margin: 30px auto;
+		background: #fff;
+		padding: 20px;
 }
