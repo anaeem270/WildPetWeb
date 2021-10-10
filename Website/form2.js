@@ -20,7 +20,9 @@
   function signUp(){
     var email = document.getElementById("email");
     var password = document.getElementById("password");
-
+    Name = document.getElementById('name').value;
+    Dateofbirth = document.getElementById('dateofbirth').value;
+    Address = document.getElementById('address').value;
     const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
     //
     promise.catch(e=>alert(e.message));
@@ -42,6 +44,8 @@
         window.location.href = "pets.html";
     }
   })
+
+  
  /* firebase.auth().onAuthStateChanged((user)=>{
     if(user != null){
         window.location.href = "pets.html";

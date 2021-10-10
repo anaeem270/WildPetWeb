@@ -48,18 +48,25 @@ main{
 	background-color: #D3D3D3;
 	background-image: url();
 	width: auto;
-	height: 100vh;
+	height: 500px;
 	background-size: auto;
 	background-position: center;
 	  background-repeat: no-repeat;
   background-size: 1500px 1500px;
 }
-h1{
-	font-size: 25px;
-	margin-right: 150px;
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+
 }
 button{
-	float: right;
 		margin-right: 20px;
 		position: relative;
   display: inline-block;
@@ -80,6 +87,27 @@ button:hover{
 	background-color: #ac34e7;
 	color: yellow;
 }
+
+h1{
+	font-size: 25px;
+	margin-right: 100px;
+}
+section{
+	width: auto;
+}
+aside { 
+	background-color: #fff;
+		height: 40vh;
+	float:left;
+    width:300px; 
+    margin-left: 50px;
+        margin-top: 50px;
+}
+img {
+  width: 300px;
+  height: auto;
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
@@ -91,29 +119,22 @@ button:hover{
 	background-color: #fff;
 	border: 1px solid #9932cc;
 	padding: 20px;
-	font-size: 20px;
-	text-align: left;
+	font-size: 16px;
+	text-align: auto;
+		width: 35%;
+		margin: 30px auto;
+		background: #fff;
+		padding: 20px;
   }
-
-.column {
-  float: left;
-  width: 35.33%;
-  padding: 5px;
-}
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.row {
-  display: flex;
-}
-
-.column {
-  flex: 33.33%;
-  padding: 5px;
-}
-
-footer{
-
+  
+  .infosResults div p{
+	background-color: #fff;
+	border: 1px solid #9932cc;
+	padding: 20px;
+	font-size: 16px;
+	text-align: auto;
+		width: 35%;
+		margin: 30px auto;
+		background: #fff;
+		padding: 20px;
 }

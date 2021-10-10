@@ -132,7 +132,7 @@ img {
 function addItemsToList(petImg, petName, petWeight, petColor, petDateofbirth, petGender){
     var ul=document.getElementById('list');
     var header= document.createElement('h2');
-    var _petImg= document.createElement('img');
+    var _petImg= document.createElement('tr');
     var _petName= document.createElement('div');
     var _petWeight= document.createElement('div');
     var _petColor= document.createElement('div');
@@ -140,7 +140,7 @@ function addItemsToList(petImg, petName, petWeight, petColor, petDateofbirth, pe
     var _petGender= document.createElement('div');
 
     header.innerHTML= 'Pet-' + (++petNo);
-    _petImg.innerHTML= 'Pet Image: ' + petImg;
+    _petImg.innerHTML= '<img src = "'+ petImg+'"width="100px">';
     _petName.innerHTML='Pet Name: ' + petName;
     _petWeight.innerHTML= 'Pet Weight: ' + petWeight;
     _petColor.innerHTML='Pet Color: ' + petColor;

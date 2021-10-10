@@ -33,49 +33,58 @@
 						<h1 style="text-align: center;">Welcome Client</h1>
 <a href="file:///C:/Users/marqu/Downloads/Indutry%20Project%203A/Website/profileEdit.html"><button type="button"><i class="material-icons" style="font-size: 16px;" style="margin-right: 40px;">edit</i>Edit Profile</button></a>
 
-
+<div class="grid-item">
+	<div id="list">
+	</div>
+	</div>	
 					<br>
-					
-					<style>
-					
-						.grid-container {
-		  display: grid;
-		  grid-template-columns: auto auto auto auto;
-		   height: 400px;
-		  align-content: center;
-		  justify-content: space-evenly;
-		
-		}
-						</style>
-		<div class="grid-container">
-			<div class="grid-item">	<img src="C:\Users\marqu\Downloads\Indutry Project 3A\Website\Image\profile.png" width = 300px; height = auto;></div>
-			<div class="grid-item">	<p style="text-align: center; width: 500px;">Profile</p>
-				<br>
-				<p style="text-align: left;margin-left: 10px">Name:</p>
-				<p style="text-align: left;margin-left: 10px">Date Of Birth:</p>
-				<p style="text-align: left;margin-left: 10px">Address:</p>
-				<p style="text-align: left;margin-left: 10px">Contact Number:</p>
-				<p style="text-align: left;margin-left: 10px">Gender:</p></div>
-			
-		
-		  </div>
+
+	
 	</main>
-	<script type="module">
-		// Your web app's Firebase configuration
-		var firebaseConfig = {
-			apiKey: "AIzaSyDpc5RCOi8CgDdOTainSQyvq_u9dnsP0q0",
-			authDomain: "thewildvetapp.firebaseapp.com",
-			databaseURL: "https://thewildvetapp-default-rtdb.asia-southeast1.firebasedatabase.app",
-			projectId: "thewildvetapp",
-			storageBucket: "thewildvetapp.appspot.com",
-			messagingSenderId: "491566586632",
-			appId: "1:491566586632:web:07ec2b38067083297eaabd",
-			measurementId: "G-EQV4MYTL78"
-		  };
-		  // Initialize Firebase
-		  firebase.initializeApp(firebaseConfig);
-		</script>
-		</main>
-		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+    <script src="form1.js"></script>
+    
+
+    <script id="MainScript" type="module">
+
+        var profileNo=0;
+
+function addItemsToList(userName, userAddress, userDateofbirth){
+    var ul=document.getElementById('list');
+    var header= document.createElement('h2');
+    var _userName= document.createElement('div');
+	var _userAddress= document.createElement('div');
+    var _userDateofbirth= document.createElement('div');
+
+
+    header.innerHTML= 'Profile-' + (++profileNo);
+    _userName.innerHTML= 'User Name: ' + userName;
+    _userAddress.innerHTML='User Address: ' + userAddress;
+    _userDateofbirth.innerHTML= 'User Date Of Birth: ' + userDateofbirth;
+ 
+
+
+    ul.appendChild(header);
+    ul.appendChild(_userName);
+    ul.appendChild(_userAddress);
+    ul.appendChild(_userDateofbirth);
+  }
+    function FetchAllData(){
+        firebase.database().ref('profile').once('value', function(snapshot){
+            snapshot.forEach(
+                function(ChildSnapshot){
+                    let userName = ChildSnapshot.val().UserName;
+                    let userAddress = ChildSnapshot.val().UserAddress;
+                    let petDateofbirth = ChildSnapshot.val().UserDateOfBirth;
+                    addItemsToList(userName, userAddress, petDateofbirth);
+                }
+            );
+        });
+    }
+    window.onload = FetchAllData();
+    </script>
 </body>
 </html>
