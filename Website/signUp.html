@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login and Registration Form in HTML</title>
+      <link rel="stylesheet" type="text/css" href="css/style10.css">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+      <script src="form2.js"></script>
+   </head>
+   <body>
+      <div class="header">
+        <img src="https://firebasestorage.googleapis.com/v0/b/thewildvetapp.appspot.com/o/imgSrc%2FLogo%20.png?alt=media&token=fdbbec98-5d40-4dab-8e88-4497924b6d54" alt="logo">
+        <h1></h1>
+      </div>
+      <div class="wrapper">
+         <div class="title-text">
+
+            <div class="title signup">
+               Signup Form
+            </div>
+         </div>
+         <div class="form-container">
+
+            <div class="grid-item" style="height: auto; margin-bottom: auto;">
+                    
+                <br>
+               
+                              <div>
+                    <label style="text-align: left;margin-left: 10px; font-size: 20px;">Email</label>
+                    <input type="email" placeholder="email" id="email"><br>
+                </div>
+                <br>
+                <div>
+                    <label style="text-align: left;margin-left: 10px; font-size: 20px;">Password</label>
+                    <input type="password" placeholder="password" id="password"><br>
+                </div>
+                <br>
+                <div>
+                        <label style="text-align: left;margin-left: 10px; font-size: 20px;">Name</label>
+                        <input type="text" class="name" placeholder="name" id="name">
+                    </div>
+                    <br>
+                <div>
+                        <label style="text-align: left;margin-left: 10px; font-size: 20px;">Date Of Birth</label>
+                        <input type="date" class="dateofbirth" placeholder="date of birth" id="dateofbirth">
+                    </div>
+                    <br>
+                <div>
+                        <label style="text-align: left;margin-left: 10px; font-size: 20px;">Address</label>
+                        <input type="text" placeholder="address" id="address"><br>
+                    </div>
+                    <br>
+                <div>
+                    <label style="text-align: left;margin-left: 10px; font-size: 20px;"></label>
+                Already a member? <a href="logIn.html">Login now</a>
+            </div>
+            <br>
+                            </div>
+                <button onclick="signUp()" id="signUp">SignUp</button>
+        </div>
+			
+                
+		  <script id = "MainScript" type="module">
+	//Ready
+	//Insert
+	document.getElementById('signUp').onclick = function(){
+	signUp()
+	firebase.database().ref('profile/' + Name).set({
+	UserName: Name,
+	UserDateOfBirth: Dateofbirth,
+	UserAddress: Address
+	});
+	}
+   </script>
+   </body>
+</html>
