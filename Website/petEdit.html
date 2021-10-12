@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Pet Info</title>
-	<link rel="stylesheet" type="text/css" href="css/style3.css">
+	<link rel="stylesheet" type="text/css" href="css/style4.css">
 </head>
 <header>
  <div class = "main">
@@ -31,7 +31,8 @@
 <body>
 	
 	<main>
-						<h1 style="text-align: center;">Pet Info</h1>
+						<h1 style="text-align: center;">Pet Edit</h1>
+                        <a href="pets.html"><button type="button" style="float: right;"><i class="material-icons" style="font-size: 16px;" style="margin-right: 40px;">check_circle</i>Done</button></a>
            <!---<form class="pet-form"> --> 
             <style>
         img {
@@ -49,11 +50,7 @@
 							  }
 											  </style>
 							  <div class="grid-container">
-								  <div class="grid-item">	    
-                    <img id="myimg">
-                    <div><label id="upProgress"></label></div>
-                   <br> <div><button id="select">Select Image</button></div>
-                     </div>
+
 								  <div class="grid-item">
                     
                     <br>
@@ -73,11 +70,6 @@
                       <input type="text" class="color" id="color">
                   </div>
                   <br>
-                    <div>
-                      <label style="text-align: left;margin-left: 10px">Date Of Birth</label>
-                      <input type="date" class="dateofbirth" id="dateofbirth">
-                  </div>
-                  <br>
                   <div>
                     <label style="text-align: left;margin-left: 10px">Microchipped</label>
                     <select class="microchipped" id="microchipped">
@@ -95,7 +87,8 @@
                     </div>
                     <br>
                     <div>
-                      <button id="upload">Submit</button>
+                        <button id="update">UPDATE</button>
+                        <button id="delete">DELETE</button>
                     <!----<button type="submit" style="text-align: left;margin-left: 10px">Submit</button>---->
                         </div><!----</form>---->  
 
@@ -111,8 +104,6 @@
 
       //Variables
       var petImg, petName, petWeight, petColor, petDateofbirth, petMicrochipped, petGender;
-      var files = [];
-      var reader;
 
       // Your web app's Firebase configuration
       var firebaseConfig = {
@@ -128,62 +119,29 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
-
-
-      //Select
-      document.getElementById("select").onclick = function (e) {
-            var input = document.createElement('input');
-            input.type = 'file'
-            input.click();
-
-            input.onchange = e => {
-                files = e.target.files;
-                reader = new FileReader();
-                reader.onload = function () {
-                    document.getElementById("myimg").src = reader.result;
-                }
-                reader.readAsDataURL(files[0]);
-            }
-            input.click();
-        }
-      //Upload
-      document.getElementById('upload').onclick = function () {
-          petName = document.getElementById('petname').value;
+      function Ready(){
+        petName = document.getElementById('petname').value;
           petWeight = document.getElementById('weight').value;
           petColor = document.getElementById('color').value;
-          petDateofbirth = document.getElementById('dateofbirth').value;
           petMicrochipped = document.getElementById('microchipped').value;
           petGender = document.getElementById('gender').value;
-          var uploadTask = firebase.storage().ref('PetImg/' + petName + " .png").put(files[0]);
-
-          uploadTask.on('state_changed', function (snapshot) {
-              var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              document.getElementById('upProgress').innerHTML = 'Upload' + progress + '%';
-          },
-              //Error Handling
-              function (error) {
-                  alert('error in saving the image');
-              },
-              //Submit image link to database
-              function () {
-                  uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
-                      petImg = url;
-
-                      firebase.database().ref('PetsInfo/' + petName).set({
-                          PetImage: petImg,
+}
+//Update
+document.getElementById('update').onclick = function(){
+    Ready();
+    firebase.database().ref('PetsInfo/' + petName).update({
                           PetName: petName,
                           PetWeight: petWeight,
                           PetColor: petColor,
-                          PetDateOfBirth: petDateofbirth,
                           PetMicrochipped: petMicrochipped,
                           PetGender: petGender
-                      });
-                      alert('pet added successfully');
-                  }
-                  );
-              });
-      }
-
-  </script>   
+    })
+}
+//Delete
+document.getElementById('delete').onclick = function(){
+    Ready();
+    firebase.database().ref('PetsInfo/' + petName).remove();
+}
+              </script>
 </body>
 </html>
