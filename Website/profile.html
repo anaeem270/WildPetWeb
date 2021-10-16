@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Profile</title>
+	<link rel="stylesheet" type="text/css" href="css/style6.css">
+</head>
+<body>
+	<header>
+		<div class = "main">
+			<div class = "logo">
+				<a href="pets.html"><img src="https://firebasestorage.googleapis.com/v0/b/thewildvetapp.appspot.com/o/imgSrc%2FLogo%20.png?alt=media&token=fdbbec98-5d40-4dab-8e88-4497924b6d54"></a>
+			</div>
+<nav class = "menu">
+	<ul>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<li><a href = "profile.html"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 25px;">perm_identity</i> Profile</a></li>
+
+<li><a href = "pets.html"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 40px;">pets</i>Pets</a></li>
+	
+	<li><a href = "reminder.html"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 25px;">notifications</i>Reminder</a></li>
+		
+		<li><a href = "support 2.html"> <i class="material-icons" style="font-size: 16px;" style="margin-right: 25px;">support_agent</i>Support</a></li>
+				
+
+</ul>
+</nav>
+
+
+</div>
+	</header>
+	<main>
+						<h1 style="text-align: center;">Welcome Client</h1>
+
+<div class="grid-item">
+	<div id="list">
+	</div>
+	</div>	
+					<br>
+
+	
+	</main>
+	<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+    <script src="form1.js"></script>
+    
+
+    <script id="MainScript" type="module">
+//Variable
+        var profileNo=0;
+//Get Data
+function addItemsToList(userName, userAddress, userDateofbirth){
+    var ul=document.getElementById('list');
+    var header= document.createElement('h2');
+    var _userName= document.createElement('div');
+	var _userAddress= document.createElement('div');
+    var _userDateofbirth= document.createElement('div');
+
+
+    header.innerHTML= 'Profile-' + (++profileNo);
+    _userName.innerHTML= 'User Name: ' + userName;
+    _userAddress.innerHTML='User Address: ' + userAddress;
+    _userDateofbirth.innerHTML= 'User Date Of Birth: ' + userDateofbirth;
+ 
+
+
+    ul.appendChild(header);
+    ul.appendChild(_userName);
+    ul.appendChild(_userAddress);
+    ul.appendChild(_userDateofbirth);
+  }
+  //Reference
+    function FetchAllData(){
+        firebase.database().ref('profile').once('value', function(snapshot){
+            snapshot.forEach(
+                function(ChildSnapshot){
+                    let userName = ChildSnapshot.val().UserName;
+                    let userAddress = ChildSnapshot.val().UserAddress;
+                    let petDateofbirth = ChildSnapshot.val().UserDateOfBirth;
+                    addItemsToList(userName, userAddress, petDateofbirth);
+                }
+            );
+        });
+    }
+	//Display Data
+    window.onload = FetchAllData();
+    </script>
+</body>
+</html>
