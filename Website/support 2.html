@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            .lbl{
+            font-weight:900;
+            font-size:16px;
+            
+            }
+            #info{
+            display:none;
+            }
+            #duration{
+            display:none;
+            }
+            </style>
+<script>
+    var ressult=null;
+    var ressult1=null;
+function testVariable(){
+
+var issueSel1 = document.getElementById("issue").value;
+
+  var symptomSel1 = document.getElementById("symptom").value;
+  var occurenceSel1 = document.getElementById("occurence").value;
+  
+   if(issueSel1==0 || symptomSel1==0 || occurenceSel1==0)
+                {
+                alert("Please Select All Options ");
+                
+  }
+  else{
+  
+            document.getElementById("show_issue").innerHTML = issueSel1;
+            document.getElementById("show_symptom").innerHTML = symptomSel1;
+            document.getElementById("show_occurence").innerHTML = occurenceSel1;
+            document.getElementById("show_outcome").innerHTML = ressult;
+            document.getElementById("show_outcome1").innerHTML = ressult1;
+            document.getElementById("info").style.display = "block";
+        
+            }
+}
+ 
+var issueObject = {
+  "Digestive": {
+    "Vomitting": ["More than 48 hours", "24-48 hours", "Less Then 1 day"],
+    "Diarrhoea": ["More than 48 hours", "24-48 hours", "Less Then 1 day"],
+    "Both": ["More than 48 hours", "24-48 hours", "Less Then 1 day"]    
+  },
+  "Breathing": {
+    "Sneezing": ["More than 3 days", "1 to 3 days", "Within Last Day"],
+    "Cough": ["No", "Not Sure", "Yes"],
+      "Nasal Discharge": ["Both Nostrils", "One Nostrils"],
+      "Choking": ["No", "Not Sure", "Yes"],
+       "Grasping": ["Difficult Breathing"]
+  }
+}
+window.onload = function() {
+  var issueSel = document.getElementById("issue");
+  var symptomSel = document.getElementById("symptom");
+  var occurenceSel = document.getElementById("occurence");
+  document.getElementById("info").style.display = "none";
+   document.getElementById("dietchange").style.display = "none";
+   document.getElementById("forthdrop").style.display = "none";
+   document.getElementById("fifthdrop").style.display = "none";
+   document.getElementById("sixthdrop").style.display = "none";
+  for (var x in issueObject) {
+    issueSel.options[issueSel.options.length] = new Option(x, x);
+   
+  }
+  issueSel.onchange = function() {
+    //empty occurences- and symptoms- dropdowns
+    occurenceSel.length = 1;
+    symptomSel.length = 1;
+    //display correct values
+    for (var y in issueObject[this.value]) {
+      symptomSel.options[symptomSel.options.length] = new Option(y, y);
+    
+    }
+  }
+  symptomSel.onchange = function() {
+    //empty occurences dropdown
+    occurenceSel.length = 1;
+    //display correct values
+    var z = issueObject[issueSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      occurenceSel.options[occurenceSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+  
+
+  // Occurance chnage////////////////////////
+
+
+    //occurance 
+// issue
+ occurence.onchange = function() {
+  document.getElementById("forthdrop").style.display = "none";
+   var issu=document.getElementById("issue").value;
+      if(issu==="Breathing")
+                {
+
+       var sym=document.getElementById("symptom").value;
+        var occ=document.getElementById("occurence").value;
+      if(sym==="Sneezing")
+          {
+            
+                if(occ==="More than 3 days")
+                {
+                
+                var arr=null;
+                 ressult="See Vet for Further Investigation";
+                
+                }
+                else if(occ==="1 to 3 days")
+                {
+                  
+                  document.getElementById("forthlabel").innerHTML="Is Nasal Dischage also?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Yes","No"];
+                    
+                }
+                else if(occ==="Within Last Day")
+                {
+                  document.getElementById("forthlabel").innerHTML="Episode Per Day?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["1-5","5-10",">10"];
+            }
+        
+      }
+
+                 else if(sym==="Cough")
+                {
+                  if(occ==="No")
+                {
+                
+                var arr=null;
+                 ressult="Category: Urgent Vet Attention requrid Pet May Suffer Permanent Brain Demage";
+                
+                }
+                else if(occ==="Not Sure")
+                {
+                  
+                  var arr=null;
+                 ressult="Category: Life-threatening Emergency.Blue or white gums suggest a crictical lack of oxygen";
+                    
+                }
+                else if(occ==="Yes")
+                {
+                  document.getElementById("forthlabel").innerHTML="How long have been coughing for?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["More than 1 week", "1-7 days", "Less Then 24 hours"];
+            }
+                }
+                else if(sym==="Nasal Discharge")
+                {
+                   if(occ==="Both Nostrils")
+                {
+                  
+                  var arr=null;
+                 ressult="See Vet For Furture Investigation";
+                    
+                }
+                else if(occ==="One Nostrils")
+                {
+                  document.getElementById("forthlabel").innerHTML="What Colour is the Dischage?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["White/Green", "Clear/watery", "Red/brown"];
+            }
+                  
+                }
+                else if(sym==="Choking")
+                {
+                  if(occ==="No")
+                {
+                
+                var arr=null;
+                 ressult="Category: Urgent Vet Attention requrid Pet May Suffer Permanent Brain Demage";
+                
+                }
+                else if(occ==="Not Sure")
+                {
+                  
+                  document.getElementById("forthlabel").innerHTML="What Color are they?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Blue","White","Pale Pink","Salmon Pink"];
+                    
+                }
+                else if(occ==="Yes")
+                {
+                  var arr=null;
+                 ressult="Gently Remove the object if it is safe to do so";
+            }
+                }
+                 else if(sym==="Grasping")
+                {
+                 
+                  var arr=null;
+                 ressult="Emergency";
+            
+                }
+              
+                }
+                else{
+//diegestive
+
+var sym=document.getElementById("symptom").value;
+        var occ=document.getElementById("occurence").value;
+      if(sym==="Vomitting")
+          {
+            
+                if(occ==="More than 48 hours")
+                {
+                
+                var arr=null;
+                 ressult="More than 48 hours warrants trip to vet for exam";
+                
+                }
+                else if(occ==="24-48 hours")
+                {
+                  document.getElementById("forthlabel").innerHTML="How Many Times?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Occasionally","Many Episodes","Constantly"];
+                    
+                }
+                else if(occ==="Less Then 1 day")
+                {
+                  document.getElementById("forthlabel").innerHTML="How Many Times?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Occasionally","Many Episodes","Constantly"];
+            }
+        
+      }
+
+                 else if(sym==="Diarrhoea")
+                { 
+                  if(occ==="More than 48 hours")
+                {
+                
+                var arr=null;
+                 ressult="More than 48 hours warrants trip to vet Urgent";
+                
+                }
+                else if(occ==="24-48 hours")
+                {
+                  document.getElementById("forthlabel").innerHTML="Is it DiarrhoeaEvery time?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Some Solid Stools","Everytime"];
+                    
+                }
+                else if(occ==="Less Then 1 day")
+                {
+                  document.getElementById("forthlabel").innerHTML="How Many Episodes?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["1-2","3-5","More than 5"];
+            }
+
+                }
+                else if(sym==="Both")
+                { 
+                  if(occ==="More than 48 hours")
+                {
+                
+                var arr=null;
+                 ressult="More than 48 hours warrants trip to vet Urgent";
+                
+                }
+                else if(occ==="24-48 hours")
+                {
+                  document.getElementById("forthlabel").innerHTML="How Many episodes?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Less than 3","Multiple"];
+                    
+                }
+                else if(occ==="Less Then 1 day")
+                {
+                  document.getElementById("forthlabel").innerHTML="How Many Episodes?";
+                document.getElementById("forthdrop").style.display = "block";
+                    var arr=["Only a couple","Multiple"];
+            }
+
+
+
+                }
+
+
+                }
+
+                var string="";
+             
+             for(i=0;i<arr.length;i++)
+             {
+                 string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+             }
+             document.getElementById("forth").innerHTML=string;
+
+
+              }
+
+
+////////// Fifth   //////////////
+
+forth.onchange = function() {
+ 
+  document.getElementById("fifthdrop").style.display = "none";
+  var sym=document.getElementById("symptom").value;
+        var occ=document.getElementById("occurence").value;
+        var forthval=document.getElementById("forth").value;
+      /////////Digestion ////////
+      if(sym==="Vomitting")
+          { 
+            if(occ==="24-48 hours")
+                {
+                
+                  if(forthval==="Occasionally"){
+                    var arr=null;
+                 ressult="Diet Change, Monitor if safe to do so";
+                   
+                  }
+                  else if(forthval==="Many"){
+                    var arr=null;
+                    ressult="Highly Suspicious for FB/pancreatitis";
+
+                  }
+                  else if(forthval==="Constantly"){
+                    var arr=null;
+                    ressult="FB/pancreatitis";
+                  }
+
+
+          }
+
+          if(occ==="Less Then 1 day")
+                {
+                
+                  if(forthval==="Occasionally"){
+                    var arr=null;
+                 ressult="Diet Change, Monitor if safe to do so";
+                   
+                  }
+                  else if(forthval==="Many"){
+                    var arr=null;
+                 ressult="Highly Suspicious for FB/pancreatitis";
+                    
+
+                  }
+                  else if(forthval==="Constantly"){
+                    var arr=null;
+                 ressult="Highly Suspicious for FB/pancreatitis";
+                  }
+
+
+          }
+
+
+}
+         else if(sym==="Diarrhoea")
+          { 
+            if(occ==="24-48 hours")
+                {
+                
+                  if(forthval==="Some"){
+                    var arr=null;
+                 ressult="Vet not as urgent";
+                   
+                  }
+                  else if(forthval==="Everytime"){
+                    var arr=null;
+                 ressult="Urgent";
+                    
+
+                  }
+          }
+
+          if(occ==="Less Then 1 day")
+                {
+                
+                  if(forthval==="1-2"){
+                    var arr=null;
+                 ressult="Monitor if safe to do so";
+                   
+                  }
+                  else if(forthval==="3-5"){
+                    var arr=null;
+                 ressult="Not Urgent Vet";
+                    
+
+                  }
+                  else if(forthval==="More"){
+                    var arr=null;
+                 ressult="Urgent Vet";
+                  }
+
+
+          }
+
+
+}
+else if(sym==="Both")
+          { 
+            if(occ==="24-48 hours")
+                {
+                
+                  if(forthval==="Less"){
+                    var arr=null;
+                 ressult="Vet but not as serious";
+                   
+                  }
+                  else if(forthval==="Multiple"){
+                    var arr=null;
+                 ressult="Vet serious";
+                    
+
+                  }
+          }
+
+          if(occ==="Less Then 1 day")
+                {
+                
+                  if(forthval==="Only"){
+                    var arr=null;
+                 ressult="Monitor if Well hydrated Bar";
+                   
+                  }
+                  else if(forthval==="Multiple"){
+                    var arr=null;
+                 ressult="Vet dehydration";
+                    
+
+                  }
+                  
+
+
+          }
+
+
+}
+
+//////////// Breating /////////
+if(sym==="Sneezing")
+          {
+            
+                if(occ==="1 to 3 days")
+                {
+                  if(forthval==="Yes"){
+                    var arr=null;
+                 ressult="See Vet for Furture Investigation";
+                   
+                  }
+                  else if(forthval==="No"){
+                    document.getElementById("fifthlabel").innerHTML="How Many Episodes?";
+                document.getElementById("fifthdrop").style.display = "block";
+                    var arr=["Only occasionally","1-5","More than 5"];
+
+                  }
+                
+                    
+                }
+                else if(occ==="Within Last Day")
+                {
+                    if(forthval==="1-5"){
+                    var arr=null;
+                 ressult="24 : Visit Vet";
+                   
+                  }
+                  else if(forthval==="5-10"){
+                    var arr=null;
+                 ressult="See Vet for Furture Investigation, Fb etc";
+
+                  }
+                  else if(forthval===">10"){
+                    var arr=null;
+                 ressult="See Vet for Furture Investigation, Fb etc";
+
+                  }
+
+
+            }
+        
+      }
+
+                 else if(sym==="Cough")
+                {
+                 
+              
+                if(occ==="Yes")
+                {
+                    if(forthval==="More"){
+                    
+                    var arr=null;
+                 ressult="See Vet Asap for medication/Furture Investigation";
+                   
+                  }
+                  else if(forthval==="1-7"){
+                    var arr=null;
+                 ressult="See Vet Asap for medication/Furture Investigation";
+
+                  }
+                  else if(forthval==="Less"){
+                    document.getElementById("fifthlabel").innerHTML="How Many Episodes?";
+                document.getElementById("fifthdrop").style.display = "block";
+                    var arr=["occasionally","Couple of hours","Multiple hours"];
+
+                  }
+
+
+            }
+                }
+                else if(sym==="Nasal Discharge")
+                {
+                   if(occ==="One Nostrils")
+                {
+                
+                    if(forthval==="White/Green"){
+                    
+                    var arr=null;
+                 ressult="21. Visit Vet";
+                   
+                  }
+                  else if(forthval==="Clear/watery"){
+                    var arr=null;
+                 ressult="22.  Visit Vet";
+
+                  }
+                  else if(forthval==="Red/brown"){
+                    var arr=null;
+                 ressult="23.  Visit Vet";
+                  }
+
+
+            }
+                  
+                }
+                else if(sym==="Choking")
+                {
+                if(occ==="Not Sure")
+                {
+                  
+                    if(forthval==="Blue"){
+                    var arr=null;
+                 ressult="Life Thretening Emergeny.Blue or white Gums suggest a critical lack of oxygen to the brain";
+
+                  }
+                  else if(forthval==="White"){
+                    var arr=null;
+                 ressult="Life Thretening Emergeny.Blue or white Gums suggest a critical lack of oxygen to the brain";
+                  }
+                  else if(forthval==="Pale"){
+                    var arr=null;
+                 ressult="urgent Vet Attention.Pale Gums suggest a shock or decreased circulation of oxygen";
+                  }
+                  else if(forthval==="Salmon"){
+                    var arr=null;
+                 ressult="Contact Vet .Salmon Gums suggest pet is oxygenating well but still suspect";
+                  }
+                }
+                
+                }
+                 
+
+
+///array////
+var string="";
+             
+             for(i=0;i<arr.length;i++)
+             {
+                 string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+             }
+             document.getElementById("fifth").innerHTML=string;
+
+
+}
+
+fifth.onchange = function() {
+ 
+  document.getElementById("sixthdrop").style.display = "none";
+  var fifthval=document.getElementById("fifth").value;
+  
+      if(fifthval==="Only")
+          { 
+            ressult="See Vet for furthure Investigation Dog Alergies Cat Flue";
+          }
+          else if(fifthval==="1-5")
+          { 
+            ressult="Modrate Make An Appointment";
+          }
+          else if(fifthval==="More")
+          { 
+            ressult="Modrate Make An Appointment";
+          }
+        
+          if(fifthval==="occasionally")
+          { 
+            document.getElementById("sixthlabel").innerHTML="How Many Episodes?";
+                document.getElementById("sixthdrop").style.display = "block";
+                    var arr=["Severe","Modrate","Mild"];
+          }
+          else if(fifthval==="Couple")
+          { 
+            document.getElementById("sixthlabel").innerHTML="How Many Episodes?";
+                document.getElementById("sixthdrop").style.display = "block";
+                var arr=["Severe","Modrate","Mild"];
+          }
+          else if(fifthval==="Multiple")
+          { 
+            ressult="See Vet Asap for medication/furthure Investigation";
+          }
+
+          ///array////
+var string="";
+             
+             for(i=0;i<arr.length;i++)
+             {
+                 string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+             }
+             document.getElementById("sixth").innerHTML=string;
+
+}
+sixth.onchange = function() {
+ 
+ 
+ var sixthval=document.getElementById("sixth").value;
+ 
+     if(sixthval==="Severe")
+         { 
+           ressult="See Vet for furthure Investigation";
+         }
+         else if(sixthval==="Modrate")
+         { 
+           ressult="See Vet for furthure Investigation";
+         }
+         else if(sixthval==="Mild")
+         { 
+           ressult="Monitor cough seek vet attention if cough presist";
+         }
+        }
+/*
+        occurence.onchange = function() {
+ var a=document.getElementById("occurence").value;
+  
+   
+                if(a==="More than 48 hours")
+                {
+                var arr=null;
+                 ressult1="Urgent! Please visit Vet ASA";
+                
+                }
+                else if(a==="24-48 hours")
+                {
+                document.getElementById("duration").style.display = "block";
+                    var arr=["Occasionally","Many Episodes","Constantly"];
+                    
+                }
+                else if(a==="Less Then 1 day")
+                {
+                document.getElementById("duration").style.display = "block";
+                    var arr=["Occasionally","Many Episodes","Constantly"];
+                }
+  var string="";
+             
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("output").innerHTML=string;
+  
+  }
+
+output.onchange = function() {
+
+var a1=document.getElementById("occurence").value;
+
+  if(a1==="Less Then 1 day") {
+var b=document.getElementById("output").value;
+   
+                if(b==="Occasionally")
+                {
+                
+                  ressult1="Diet Change,Monitor if safe to do so";
+               
+                }
+                else if(b==="Many")
+                {
+               
+                     ressult1="Highly Suspicious for FB/pancreatitis";
+                    
+                }
+                else if(b==="Constantly")
+                {
+               ressult1="Highly Suspicious for FB/pancreatitis";
+               
+                }
+ 
+  } 
+
+ else if(a1==="24-48 hours") { 
+   var b=document.getElementById("output").value;
+   
+                if(b==="Occasionally")
+                {
+                
+                  ressult1="Diet Change,Monitor if safe to do so";
+               
+                }
+                else if(b==="Many")
+                {
+               document.getElementById("dietchange").style.display = "block";
+                    var arr=["Yes","No"];
+                  
+                    
+                }
+                else if(b==="Constantly")
+                {
+             document.getElementById("dietchange").style.display = "block";
+                    var arr=["Yes","No","Not Sure"];
+               
+                }
+  var string="";
+             
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("dietchange").innerHTML=string;
+  }
+  
+  
+  }
+
+  dietchange.onchange = function() {
+    var b=document.getElementById("dietchange").value;
+   
+                if(b==="Yes")
+                {
+                
+                  ressult1="Likely Diet related but see vet to check e.g in case of FB";
+               
+                }
+                else if(b==="No")
+                {
+               
+                     ressult1="Highly Suspicious for FB/pancreatitis";
+                    
+                }
+                else if(b==="Not Sure")
+                {
+               ressult1="FB/pancreatitis";
+               
+                }
+  }
+  
+}
+
+*/
+}
+</script>
+</head>  
+ 
+<body style="background-color:#e9ecef">
+    
+    <header>
+	<nav class="navbar navbar-expand-sm  navbar-dark"style="background: -webkit-linear-gradient(left, #9400d3, #9932cc, #ac34e7);">
+	 <div class="container">
+
+  <a class="navbar-brand" href="pets.html">
+    <img src="https://firebasestorage.googleapis.com/v0/b/thewildvetapp.appspot.com/o/imgSrc%2FLogo%20.png?alt=media&token=fdbbec98-5d40-4dab-8e88-4497924b6d54"  alt="logo" style="width:100px;">
+  </a>
+  
+
+  <ul class="navbar-nav"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ 
+    <li class="nav-item">
+      <a class="nav-link" href ="profile.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">perm_identity</i> Profile</a></li> </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href = "pets.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">pets</i>Pets</a></li></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  href="reminder.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">notifications</i>Reminder</a></li>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link"href="support 2.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">support_agent</i>Support</a></li>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"href="about.html"> <i class="material-icons" style="font-size: 30px;" style="margin-right: 60px;">info</i>About</a></li>
+    </li>
+	</div>
+
+  </ul>
+</nav>
+		
+
+</div>
+	</header>
+        
+        <div class="main" >
+  <div class="container">
+            <div class="row" style="padding-top: 50px;
+">
+ <div class="col-md-5" style="background-color:white;padding:4px;">
+     
+     <div style="background-color:#9400d3;padding:20px">
+    <h2 class="text-white" > Support</h2>
+    </div>
+    
+    <div style="background-color:#9400d3;padding: 20px;margin: 20px;border-radius: 20px;">
+    <h6 class="text-white"> Choose from the following so that best fits for your pet is currently experiencing </h6> 
+        </div>
+<form class="form-group">
+<label class="lbl">Issue: </label>
+<br><select name="issue" id="issue" class="form-control">
+    <option value="0" selected="selected">Select Issue</option>
+  </select>
+  <br>
+      <label class="lbl">Symptoms:</label>
+
+<br> <select name="symptom" id="symptom" class="form-control"> 
+    <option value="0" disabled selected="selected">Please Symptoms</option>
+  </select>
+  <br>
+      <label class="lbl">occurences: </label>
+ <br>
+<select name="occurence" id="occurence" class="form-control" >
+    <option value="0" selected="selected">Select More Specific details</option>
+  </select>
+  <br>
+
+  <div id="forthdrop">
+    <label id="forthlabel"></label>
+    <br>
+<select id="forth" class="form-control">
+  <option value="-1" selected="selected">Select More Specific details</option>
+  </select>
+<br>
+    </div>
+
+    <div id="fifthdrop">
+      <label id="fifthlabel"></label>
+      <br>
+  <select id="fifth" class="form-control">
+    <option value="-1" selected="selected">Select More Specific details</option>
+    </select>
+  <br>
+      </div>
+
+      <div id="sixthdrop">
+        <label id="sixthlabel"></label>
+        <br>
+    <select id="sixth" class="form-control">
+      <option value="-1" selected="selected">Select More Specific details</option>
+      </select>
+    <br>
+        </div>
+
+       <div id="duration">
+      <label>How Many Times?</label>
+      <br>
+<select id="output" class="form-control">
+    
+    </select>
+  <br>
+      </div>
+       <div id="dietchange">
+      <label>IS there is Any diet Change?</label>
+      <br>
+<select id="dietchange" class="form-control">
+    
+    </select>
+  <br>
+      </div>
+   <input type="button" class="btn" style="background-color:#9400d3;color:White" value="Done" onclick="testVariable()" id="btnSubmit">
+</form>
+</div>
+<div class="col-md-1"></div>
+<div class="col-md-5" style="background-color:white;padding:4px;">
+    <div id="result">
+        
+         <div style="background-color:#9400d3;padding:20px">
+    <h2 class="text-white" > Results</h2>
+    </div>
+        <br><br>
+
+<br>
+<label class="lbl">Issue:</label>
+<br>
+<p id="show_issue"></p>
+<label class="lbl">Symptoms:</label><br>
+        <p id="show_symptom"></p>
+        <label class="lbl">Occurences:</label>
+		<br>
+        <p id="show_occurence"></p>
+
+<label class="lbl">Final Outcome:</label><br> 
+            <p id="show_outcome"></p>
+             <p id="show_outcome1"></p>
+        <p id="Final outcome"></p>
+        <div id="info">
+            <h3>To Schedule a Booking: </h3>
+        
+		<input type="button"class="btn" style="background-color:#9400d3;color:White" value="Call Us 1300 945 383" id="callus">
+		<br><br>
+	<input type="button"class="btn" style="background-color:#9400d3;color:White"value="Done" id="btnsubmit">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
